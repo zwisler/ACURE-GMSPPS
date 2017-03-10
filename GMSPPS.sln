@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMSPPS", "GMSPPS\GMSPPS.csproj", "{90CEA3E1-7FD0-4C63-A3B8-612C4CF15919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientTool", "..\WebClientTool\WebClientTool\WebClientTool.csproj", "{C1274B3C-5E97-4B37-AA9C-7C20F6F4E50A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMSPPStoGMS", "ConsoleApplication1\GMSPPStoGMS.csproj", "{00E99E76-9CFB-44AD-AAEE-F07ABCAA44BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90CEA3E1-7FD0-4C63-A3B8-612C4CF15919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CEA3E1-7FD0-4C63-A3B8-612C4CF15919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90CEA3E1-7FD0-4C63-A3B8-612C4CF15919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CEA3E1-7FD0-4C63-A3B8-612C4CF15919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1274B3C-5E97-4B37-AA9C-7C20F6F4E50A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1274B3C-5E97-4B37-AA9C-7C20F6F4E50A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1274B3C-5E97-4B37-AA9C-7C20F6F4E50A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1274B3C-5E97-4B37-AA9C-7C20F6F4E50A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E99E76-9CFB-44AD-AAEE-F07ABCAA44BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E99E76-9CFB-44AD-AAEE-F07ABCAA44BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E99E76-9CFB-44AD-AAEE-F07ABCAA44BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E99E76-9CFB-44AD-AAEE-F07ABCAA44BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
