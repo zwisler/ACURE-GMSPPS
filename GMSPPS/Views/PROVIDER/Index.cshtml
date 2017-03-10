@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GMSPPS.GPMS_PROVIDER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        
+        
+        <th>
+            @Html.DisplayNameFor(model => model.GPMS_PROVIDER_TYP.TYP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            <strong>  @Html.DisplayFor(modelItem => item.Name) </strong>
+        </td>       
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.GPMS_PROVIDER_TYP.TYP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Wait", "Wait", new { id=item.ID }) |
+            @Html.ActionLink("KeyWords", "Index", "PROVIDER_SUBPPLY", new { id = item.ID })
+            @Html.ActionLink("KeyWords2", "Index", "PROVIDER_SUBPPLY", new { area = "" }, new { id = item.ID })
+
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

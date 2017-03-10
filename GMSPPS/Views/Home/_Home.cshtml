@@ -1,0 +1,98 @@
+﻿<!-- ko with: home -->
+
+<div class="jumbotron" style="background: transparent url(&quot;img/backgrounds/landscape.png&quot;) repeat-x scroll center top; display: block;">
+    <h1>GMSPPS</h1>
+    <p class="lead">GMSPPS is a free open webservice to send missions to mobile devicees using HTML, CSS, and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <h2>Your information</h2>
+        <pre class="prettyprint"> static async Task MainAsync()
+        {
+            //coment
+            try
+            {
+                var hubConnection = new HubConnection("http://gmspps.azurewebsites.net/signalr/");                
+                IHubProxy hubProxy = hubConnection.CreateHubProxy("providerhub");
+                hubProxy.On<float, float, string, int>("addPin", (LAT, LON, Name, Status) =>
+                {
+                    string ESID = "0";
+                    Console.WriteLine("Incoming data: {0} {1} von {2} Status {3}", LAT, LON, Name, Status);
+                    User_Mission mymission = User_Einsätze.Where(x => x.Name == Name).FirstOrDefault();
+                    if (mymission != null)
+                    {
+                        // bei einem Einsatz dabei
+                        ESID = mymission.CostumMissionID;
+                        if(Status == 1 || Status == 2 || Status == 6)
+                        {
+                            //Vom Einsatz entfernen
+                            User_Einsätze.Remove(mymission);
+                        }
+                    }
+                FMS10GMT(Name, ESID, Status.ToString(), LAT.ToString(), LON.ToString());
+                });
+                await hubConnection.Start();
+                hubProxy.Invoke("Subscribe", ProviderName).Wait();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+</pre>
+        <p>This section shows how you can call ASP.NET Web API to get the user details.</p>
+        
+    </div>
+
+    <div class="col-md-4">
+       
+   
+    </div>
+
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <pre class="prettyprint linenums languague-css crayon-code crayon-theme-vs2012">
+// Some source code
+class Foo {
+    public int Bar { get; set; }
+}
+</pre>
+       
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <div>
+            <h4 class="sample-header">application/json, text/json</h4>
+            <div class="sample-content">
+                <span><b>Sample:</b></span>
+<pre class="prettyprint crayon-code crayon-theme-vs2012 crayon-syntax crayon-wrapped">{
+  defaultUrl: "sample string 1",
+  "costumMissionID": "sample string 1",
+  "url": "sample string 2",
+  "title": "sample string 3",
+  "text": "sample string 4",
+  "positions": [
+    {
+      "lat": 1.1,
+      "lon": 2.1
+    },
+    {
+      "lat": 1.1,
+      "lon": 2.1
+    }
+  ]
+}
+</pre>
+            </div>
+            
+         
+            <h4 class="sample-header">application/x-www-form-urlencoded</h4>
+            <div class="sample-content">
+                <span><b>Sample:</b></span>
+                <div class="warning-message-container">
+                    <p>Failed to generate the sample for media type 'application/x-www-form-urlencoded'. Cannot use formatter 'JQueryMvcFormUrlEncodedFormatter' to write type 'GPMS_MissionModel'.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /ko -->

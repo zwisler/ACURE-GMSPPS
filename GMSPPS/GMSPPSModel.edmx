@@ -1,0 +1,1054 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GPMS_CLIENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_DEVICE_TYPE_ID" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="TOOKEN" Type="nvarchar(max)" />
+          <Property Name="GoogleID" Type="nvarchar" MaxLength="255" />
+          <Property Name="LiveID" Type="nvarchar" MaxLength="255" />
+          <Property Name="RegistrationID" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="GPMS_CLIENT_STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_CLIENT_ID" Type="int" Nullable="false" />
+          <Property Name="GPMS_STATE_ID" Type="int" Nullable="false" />
+          <Property Name="LAT" Type="float" />
+          <Property Name="LON" Type="float" />
+          <Property Name="DATETIME" Type="datetime" />
+          <Property Name="POS" Type="geography" />
+        </EntityType>
+        <EntityType Name="GPMS_CLIENT_SUSCRIPT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_CLIENT_ID" Type="int" />
+          <Property Name="GPMS_PROVIDER_SUPPLY_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="GPMS_DEVICE_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEVICE_SYSTEM" Type="nvarchar" MaxLength="256" />
+          <Property Name="PNS_STRING" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="GPMS_MISSION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_PROVIDER_ID" Type="int" />
+          <Property Name="GPMS_MISSION_STATE_ID" Type="int" />
+          <Property Name="GPMS_SUPPLY_ID" Type="int" />
+          <Property Name="CostumMissionID" Type="nvarchar" MaxLength="256" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" />
+          <Property Name="CostumURL" Type="nvarchar" MaxLength="256" />
+          <Property Name="Text" Type="nvarchar" MaxLength="256" />
+          <Property Name="LAT" Type="float" />
+          <Property Name="LON" Type="float" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="OverTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GPMS_MISSION_ACC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GPMS_MISSION_CLIENT_ACC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_MISSION_ID" Type="int" />
+          <Property Name="GPMS_CLIENT_ID" Type="int" />
+          <Property Name="GPMS_MISSION_ACC_ID" Type="int" />
+          <Property Name="DATETIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GPMS_MISSION_STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_PROVIDER_TYP_ID" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="URL" Type="nvarchar" MaxLength="255" />
+          <Property Name="LOGO_URL" Type="nvarchar" MaxLength="255" />
+          <Property Name="API_TOOKEN" Type="nvarchar(max)" />
+          <Property Name="Suscribe_Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER_CLIENTS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_PROVIDER_ID" Type="int" />
+          <Property Name="GPMS_CLIENT_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER_SUPPLY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_PROVIDER_ID" Type="int" />
+          <Property Name="SUPPLY" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER_SUSCRIPT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPMS_PROVIDER_CLIENTS_ID" Type="int" />
+          <Property Name="POSITION" Type="bit" Nullable="false" />
+          <Property Name="STATUS" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER_TYP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TYP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GPMS_STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__GPMS_CLIE__GPMS___01142BA1">
+          <End Role="GPMS_STATE" Type="Self.GPMS_STATE" Multiplicity="1" />
+          <End Role="GPMS_CLIENT_STATE" Type="Self.GPMS_CLIENT_STATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_STATE">
+              <PropertyRef Name="GPMS_STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_CLIE__GPMS___160F4887">
+          <End Role="GPMS_DEVICE_TYPE" Type="Self.GPMS_DEVICE_TYPE" Multiplicity="0..1" />
+          <End Role="GPMS_CLIENT" Type="Self.GPMS_CLIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_DEVICE_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT">
+              <PropertyRef Name="GPMS_DEVICE_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_CLIE__GPMS___17036CC0">
+          <End Role="GPMS_CLIENT" Type="Self.GPMS_CLIENT" Multiplicity="0..1" />
+          <End Role="GPMS_CLIENT_SUSCRIPT" Type="Self.GPMS_CLIENT_SUSCRIPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_SUSCRIPT">
+              <PropertyRef Name="GPMS_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_CLIE__GPMS___18EBB532">
+          <End Role="GPMS_CLIENT" Type="Self.GPMS_CLIENT" Multiplicity="1" />
+          <End Role="GPMS_CLIENT_STATE" Type="Self.GPMS_CLIENT_STATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_STATE">
+              <PropertyRef Name="GPMS_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_CLIE__GPMS___5535A963">
+          <End Role="GPMS_PROVIDER_SUPPLY" Type="Self.GPMS_PROVIDER_SUPPLY" Multiplicity="0..1" />
+          <End Role="GPMS_CLIENT_SUSCRIPT" Type="Self.GPMS_CLIENT_SUSCRIPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER_SUPPLY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_SUSCRIPT">
+              <PropertyRef Name="GPMS_PROVIDER_SUPPLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___3D2915A8">
+          <End Role="GPMS_PROVIDER" Type="Self.GPMS_PROVIDER" Multiplicity="0..1" />
+          <End Role="GPMS_MISSION" Type="Self.GPMS_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION">
+              <PropertyRef Name="GPMS_PROVIDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___3E1D39E1">
+          <End Role="GPMS_MISSION_STATE" Type="Self.GPMS_MISSION_STATE" Multiplicity="0..1" />
+          <End Role="GPMS_MISSION" Type="Self.GPMS_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_MISSION_STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION">
+              <PropertyRef Name="GPMS_MISSION_STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___3F115E1A">
+          <End Role="GPMS_PROVIDER_SUPPLY" Type="Self.GPMS_PROVIDER_SUPPLY" Multiplicity="0..1" />
+          <End Role="GPMS_MISSION" Type="Self.GPMS_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER_SUPPLY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION">
+              <PropertyRef Name="GPMS_SUPPLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___489AC854">
+          <End Role="GPMS_MISSION" Type="Self.GPMS_MISSION" Multiplicity="0..1" />
+          <End Role="GPMS_MISSION_CLIENT_ACC" Type="Self.GPMS_MISSION_CLIENT_ACC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_MISSION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION_CLIENT_ACC">
+              <PropertyRef Name="GPMS_MISSION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___498EEC8D">
+          <End Role="GPMS_CLIENT" Type="Self.GPMS_CLIENT" Multiplicity="0..1" />
+          <End Role="GPMS_MISSION_CLIENT_ACC" Type="Self.GPMS_MISSION_CLIENT_ACC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION_CLIENT_ACC">
+              <PropertyRef Name="GPMS_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___4A8310C6">
+          <End Role="GPMS_MISSION_ACC" Type="Self.GPMS_MISSION_ACC" Multiplicity="0..1" />
+          <End Role="GPMS_MISSION_CLIENT_ACC" Type="Self.GPMS_MISSION_CLIENT_ACC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_MISSION_ACC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION_CLIENT_ACC">
+              <PropertyRef Name="GPMS_MISSION_ACC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___17F790F9">
+          <End Role="GPMS_CLIENT" Type="Self.GPMS_CLIENT" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER_CLIENTS" Type="Self.GPMS_PROVIDER_CLIENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER_CLIENTS">
+              <PropertyRef Name="GPMS_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___5629CD9C">
+          <End Role="GPMS_PROVIDER_TYP" Type="Self.GPMS_PROVIDER_TYP" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER" Type="Self.GPMS_PROVIDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER_TYP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER">
+              <PropertyRef Name="GPMS_PROVIDER_TYP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___571DF1D5">
+          <End Role="GPMS_PROVIDER" Type="Self.GPMS_PROVIDER" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER_CLIENTS" Type="Self.GPMS_PROVIDER_CLIENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER_CLIENTS">
+              <PropertyRef Name="GPMS_PROVIDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___59063A47">
+          <End Role="GPMS_PROVIDER" Type="Self.GPMS_PROVIDER" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER_SUPPLY" Type="Self.GPMS_PROVIDER_SUPPLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER_SUPPLY">
+              <PropertyRef Name="GPMS_PROVIDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___59FA5E80">
+          <End Role="GPMS_PROVIDER_CLIENTS" Type="Self.GPMS_PROVIDER_CLIENTS" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER_SUSCRIPT" Type="Self.GPMS_PROVIDER_SUSCRIPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER_CLIENTS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER_SUSCRIPT">
+              <PropertyRef Name="GPMS_PROVIDER_CLIENTS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="GPMS_CLIENT" EntityType="Self.GPMS_CLIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_CLIENT_STATE" EntityType="Self.GPMS_CLIENT_STATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_CLIENT_SUSCRIPT" EntityType="Self.GPMS_CLIENT_SUSCRIPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_DEVICE_TYPE" EntityType="Self.GPMS_DEVICE_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_MISSION" EntityType="Self.GPMS_MISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_MISSION_ACC" EntityType="Self.GPMS_MISSION_ACC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_MISSION_CLIENT_ACC" EntityType="Self.GPMS_MISSION_CLIENT_ACC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_MISSION_STATE" EntityType="Self.GPMS_MISSION_STATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_PROVIDER" EntityType="Self.GPMS_PROVIDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_PROVIDER_CLIENTS" EntityType="Self.GPMS_PROVIDER_CLIENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_PROVIDER_SUPPLY" EntityType="Self.GPMS_PROVIDER_SUPPLY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_PROVIDER_SUSCRIPT" EntityType="Self.GPMS_PROVIDER_SUSCRIPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_PROVIDER_TYP" EntityType="Self.GPMS_PROVIDER_TYP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPMS_STATE" EntityType="Self.GPMS_STATE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___01142BA1" Association="Self.FK__GPMS_CLIE__GPMS___01142BA1">
+            <End Role="GPMS_STATE" EntitySet="GPMS_STATE" />
+            <End Role="GPMS_CLIENT_STATE" EntitySet="GPMS_CLIENT_STATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___160F4887" Association="Self.FK__GPMS_CLIE__GPMS___160F4887">
+            <End Role="GPMS_DEVICE_TYPE" EntitySet="GPMS_DEVICE_TYPE" />
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___17036CC0" Association="Self.FK__GPMS_CLIE__GPMS___17036CC0">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_CLIENT_SUSCRIPT" EntitySet="GPMS_CLIENT_SUSCRIPT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___18EBB532" Association="Self.FK__GPMS_CLIE__GPMS___18EBB532">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_CLIENT_STATE" EntitySet="GPMS_CLIENT_STATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___5535A963" Association="Self.FK__GPMS_CLIE__GPMS___5535A963">
+            <End Role="GPMS_PROVIDER_SUPPLY" EntitySet="GPMS_PROVIDER_SUPPLY" />
+            <End Role="GPMS_CLIENT_SUSCRIPT" EntitySet="GPMS_CLIENT_SUSCRIPT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___3D2915A8" Association="Self.FK__GPMS_MISS__GPMS___3D2915A8">
+            <End Role="GPMS_PROVIDER" EntitySet="GPMS_PROVIDER" />
+            <End Role="GPMS_MISSION" EntitySet="GPMS_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___3E1D39E1" Association="Self.FK__GPMS_MISS__GPMS___3E1D39E1">
+            <End Role="GPMS_MISSION_STATE" EntitySet="GPMS_MISSION_STATE" />
+            <End Role="GPMS_MISSION" EntitySet="GPMS_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___3F115E1A" Association="Self.FK__GPMS_MISS__GPMS___3F115E1A">
+            <End Role="GPMS_PROVIDER_SUPPLY" EntitySet="GPMS_PROVIDER_SUPPLY" />
+            <End Role="GPMS_MISSION" EntitySet="GPMS_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___489AC854" Association="Self.FK__GPMS_MISS__GPMS___489AC854">
+            <End Role="GPMS_MISSION" EntitySet="GPMS_MISSION" />
+            <End Role="GPMS_MISSION_CLIENT_ACC" EntitySet="GPMS_MISSION_CLIENT_ACC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___498EEC8D" Association="Self.FK__GPMS_MISS__GPMS___498EEC8D">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_MISSION_CLIENT_ACC" EntitySet="GPMS_MISSION_CLIENT_ACC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___4A8310C6" Association="Self.FK__GPMS_MISS__GPMS___4A8310C6">
+            <End Role="GPMS_MISSION_ACC" EntitySet="GPMS_MISSION_ACC" />
+            <End Role="GPMS_MISSION_CLIENT_ACC" EntitySet="GPMS_MISSION_CLIENT_ACC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___17F790F9" Association="Self.FK__GPMS_PROV__GPMS___17F790F9">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_PROVIDER_CLIENTS" EntitySet="GPMS_PROVIDER_CLIENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___5629CD9C" Association="Self.FK__GPMS_PROV__GPMS___5629CD9C">
+            <End Role="GPMS_PROVIDER_TYP" EntitySet="GPMS_PROVIDER_TYP" />
+            <End Role="GPMS_PROVIDER" EntitySet="GPMS_PROVIDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___571DF1D5" Association="Self.FK__GPMS_PROV__GPMS___571DF1D5">
+            <End Role="GPMS_PROVIDER" EntitySet="GPMS_PROVIDER" />
+            <End Role="GPMS_PROVIDER_CLIENTS" EntitySet="GPMS_PROVIDER_CLIENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___59063A47" Association="Self.FK__GPMS_PROV__GPMS___59063A47">
+            <End Role="GPMS_PROVIDER" EntitySet="GPMS_PROVIDER" />
+            <End Role="GPMS_PROVIDER_SUPPLY" EntitySet="GPMS_PROVIDER_SUPPLY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___59FA5E80" Association="Self.FK__GPMS_PROV__GPMS___59FA5E80">
+            <End Role="GPMS_PROVIDER_CLIENTS" EntitySet="GPMS_PROVIDER_CLIENTS" />
+            <End Role="GPMS_PROVIDER_SUSCRIPT" EntitySet="GPMS_PROVIDER_SUSCRIPT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GPMS_CLIENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_DEVICE_TYPE_ID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TOOKEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_DEVICE_TYPE" Relationship="Self.FK__GPMS_CLIE__GPMS___534D60F1" FromRole="GPMS_CLIENT" ToRole="GPMS_DEVICE_TYPE" />
+          <NavigationProperty Name="GPMS_CLIENT_SUSCRIPT" Relationship="Self.FK__GPMS_CLIE__GPMS___5441852A" FromRole="GPMS_CLIENT" ToRole="GPMS_CLIENT_SUSCRIPT" />
+          <NavigationProperty Name="GPMS_PROVIDER_CLIENTS" Relationship="Self.FK__GPMS_PROV__GPMS___5812160E" FromRole="GPMS_CLIENT" ToRole="GPMS_PROVIDER_CLIENTS" />
+          <Property Name="GoogleID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_CLIENT_STATE" Relationship="Model.FK__GPMS_CLIE__GPMS___73BA3083" FromRole="GPMS_CLIENT" ToRole="GPMS_CLIENT_STATE" />
+          <NavigationProperty Name="GPMS_CLIENT_STATE1" Relationship="Model.FK__GPMS_CLIE__GPMS___74AE54BC" FromRole="GPMS_CLIENT" ToRole="GPMS_CLIENT_STATE" />
+          <Property Name="LiveID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_MISSION_CLIENT_ACC" Relationship="Model.FK__GPMS_MISS__GPMS___498EEC8D" FromRole="GPMS_CLIENT" ToRole="GPMS_MISSION_CLIENT_ACC" />
+        </EntityType>
+        <EntityType Name="GPMS_CLIENT_SUSCRIPT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_CLIENT_ID" Type="Int32" />
+          <Property Name="GPMS_PROVIDER_SUPPLY_ID" Type="Int32" />
+          <NavigationProperty Name="GPMS_CLIENT" Relationship="Self.FK__GPMS_CLIE__GPMS___5441852A" FromRole="GPMS_CLIENT_SUSCRIPT" ToRole="GPMS_CLIENT" />
+          <NavigationProperty Name="GPMS_PROVIDER_SUPPLY" Relationship="Self.FK__GPMS_CLIE__GPMS___5535A963" FromRole="GPMS_CLIENT_SUSCRIPT" ToRole="GPMS_PROVIDER_SUPPLY" />
+        </EntityType>
+        <EntityType Name="GPMS_DEVICE_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEVICE_SYSTEM" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PNS_STRING" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_CLIENT" Relationship="Self.FK__GPMS_CLIE__GPMS___534D60F1" FromRole="GPMS_DEVICE_TYPE" ToRole="GPMS_CLIENT" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_PROVIDER_TYP_ID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LOGO_URL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_PROVIDER_TYP" Relationship="Self.FK__GPMS_PROV__GPMS___5629CD9C" FromRole="GPMS_PROVIDER" ToRole="GPMS_PROVIDER_TYP" />
+          <NavigationProperty Name="GPMS_PROVIDER_CLIENTS" Relationship="Self.FK__GPMS_PROV__GPMS___571DF1D5" FromRole="GPMS_PROVIDER" ToRole="GPMS_PROVIDER_CLIENTS" />
+          <NavigationProperty Name="GPMS_PROVIDER_SUPPLY" Relationship="Self.FK__GPMS_PROV__GPMS___59063A47" FromRole="GPMS_PROVIDER" ToRole="GPMS_PROVIDER_SUPPLY" />
+          <Property Name="API_TOOKEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Suscribe_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_MISSION" Relationship="Model.FK__GPMS_MISS__GPMS___3D2915A8" FromRole="GPMS_PROVIDER" ToRole="GPMS_MISSION" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER_CLIENTS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_PROVIDER_ID" Type="Int32" />
+          <Property Name="GPMS_CLIENT_ID" Type="Int32" />
+          <NavigationProperty Name="GPMS_CLIENT" Relationship="Self.FK__GPMS_PROV__GPMS___5812160E" FromRole="GPMS_PROVIDER_CLIENTS" ToRole="GPMS_CLIENT" />
+          <NavigationProperty Name="GPMS_PROVIDER" Relationship="Self.FK__GPMS_PROV__GPMS___571DF1D5" FromRole="GPMS_PROVIDER_CLIENTS" ToRole="GPMS_PROVIDER" />
+          <NavigationProperty Name="GPMS_PROVIDER_SUSCRIPT" Relationship="Self.FK__GPMS_PROV__GPMS___59FA5E80" FromRole="GPMS_PROVIDER_CLIENTS" ToRole="GPMS_PROVIDER_SUSCRIPT" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER_SUPPLY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_PROVIDER_ID" Type="Int32" />
+          <Property Name="SUPPLY" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_CLIENT_SUSCRIPT" Relationship="Self.FK__GPMS_CLIE__GPMS___5535A963" FromRole="GPMS_PROVIDER_SUPPLY" ToRole="GPMS_CLIENT_SUSCRIPT" />
+          <NavigationProperty Name="GPMS_PROVIDER" Relationship="Self.FK__GPMS_PROV__GPMS___59063A47" FromRole="GPMS_PROVIDER_SUPPLY" ToRole="GPMS_PROVIDER" />
+          <NavigationProperty Name="GPMS_MISSION" Relationship="Model.FK__GPMS_MISS__GPMS___3F115E1A" FromRole="GPMS_PROVIDER_SUPPLY" ToRole="GPMS_MISSION" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER_SUSCRIPT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_PROVIDER_CLIENTS_ID" Type="Int32" />
+          <Property Name="POSITION" Type="Boolean" Nullable="false" />
+          <Property Name="STATUS" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GPMS_PROVIDER_CLIENTS" Relationship="Self.FK__GPMS_PROV__GPMS___59FA5E80" FromRole="GPMS_PROVIDER_SUSCRIPT" ToRole="GPMS_PROVIDER_CLIENTS" />
+        </EntityType>
+        <EntityType Name="GPMS_PROVIDER_TYP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GPMS_PROVIDER" Relationship="Self.FK__GPMS_PROV__GPMS___5629CD9C" FromRole="GPMS_PROVIDER_TYP" ToRole="GPMS_PROVIDER" />
+        </EntityType>
+        <Association Name="FK__GPMS_CLIE__GPMS___534D60F1">
+          <End Role="GPMS_DEVICE_TYPE" Type="Self.GPMS_DEVICE_TYPE" Multiplicity="0..1" />
+          <End Role="GPMS_CLIENT" Type="Self.GPMS_CLIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_DEVICE_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT">
+              <PropertyRef Name="GPMS_DEVICE_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_CLIE__GPMS___5441852A">
+          <End Role="GPMS_CLIENT" Type="Self.GPMS_CLIENT" Multiplicity="0..1" />
+          <End Role="GPMS_CLIENT_SUSCRIPT" Type="Self.GPMS_CLIENT_SUSCRIPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_SUSCRIPT">
+              <PropertyRef Name="GPMS_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___5812160E">
+          <End Role="GPMS_CLIENT" Type="Self.GPMS_CLIENT" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER_CLIENTS" Type="Self.GPMS_PROVIDER_CLIENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER_CLIENTS">
+              <PropertyRef Name="GPMS_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_CLIE__GPMS___5535A963">
+          <End Role="GPMS_PROVIDER_SUPPLY" Type="Self.GPMS_PROVIDER_SUPPLY" Multiplicity="0..1" />
+          <End Role="GPMS_CLIENT_SUSCRIPT" Type="Self.GPMS_CLIENT_SUSCRIPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER_SUPPLY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_SUSCRIPT">
+              <PropertyRef Name="GPMS_PROVIDER_SUPPLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___5629CD9C">
+          <End Role="GPMS_PROVIDER_TYP" Type="Self.GPMS_PROVIDER_TYP" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER" Type="Self.GPMS_PROVIDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER_TYP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER">
+              <PropertyRef Name="GPMS_PROVIDER_TYP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___571DF1D5">
+          <End Role="GPMS_PROVIDER" Type="Self.GPMS_PROVIDER" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER_CLIENTS" Type="Self.GPMS_PROVIDER_CLIENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER_CLIENTS">
+              <PropertyRef Name="GPMS_PROVIDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___59063A47">
+          <End Role="GPMS_PROVIDER" Type="Self.GPMS_PROVIDER" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER_SUPPLY" Type="Self.GPMS_PROVIDER_SUPPLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER_SUPPLY">
+              <PropertyRef Name="GPMS_PROVIDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_PROV__GPMS___59FA5E80">
+          <End Role="GPMS_PROVIDER_CLIENTS" Type="Self.GPMS_PROVIDER_CLIENTS" Multiplicity="0..1" />
+          <End Role="GPMS_PROVIDER_SUSCRIPT" Type="Self.GPMS_PROVIDER_SUSCRIPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER_CLIENTS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_PROVIDER_SUSCRIPT">
+              <PropertyRef Name="GPMS_PROVIDER_CLIENTS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GMSPPSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GPMS_CLIENT" EntityType="Self.GPMS_CLIENT" />
+          <EntitySet Name="GPMS_CLIENT_SUSCRIPT" EntityType="Self.GPMS_CLIENT_SUSCRIPT" />
+          <EntitySet Name="GPMS_DEVICE_TYPE" EntityType="Self.GPMS_DEVICE_TYPE" />
+          <EntitySet Name="GPMS_PROVIDER" EntityType="Self.GPMS_PROVIDER" />
+          <EntitySet Name="GPMS_PROVIDER_CLIENTS" EntityType="Self.GPMS_PROVIDER_CLIENTS" />
+          <EntitySet Name="GPMS_PROVIDER_SUPPLY" EntityType="Self.GPMS_PROVIDER_SUPPLY" />
+          <EntitySet Name="GPMS_PROVIDER_SUSCRIPT" EntityType="Self.GPMS_PROVIDER_SUSCRIPT" />
+          <EntitySet Name="GPMS_PROVIDER_TYP" EntityType="Self.GPMS_PROVIDER_TYP" />
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___534D60F1" Association="Self.FK__GPMS_CLIE__GPMS___534D60F1">
+            <End Role="GPMS_DEVICE_TYPE" EntitySet="GPMS_DEVICE_TYPE" />
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___5441852A" Association="Self.FK__GPMS_CLIE__GPMS___5441852A">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_CLIENT_SUSCRIPT" EntitySet="GPMS_CLIENT_SUSCRIPT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___5812160E" Association="Self.FK__GPMS_PROV__GPMS___5812160E">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_PROVIDER_CLIENTS" EntitySet="GPMS_PROVIDER_CLIENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___5535A963" Association="Self.FK__GPMS_CLIE__GPMS___5535A963">
+            <End Role="GPMS_PROVIDER_SUPPLY" EntitySet="GPMS_PROVIDER_SUPPLY" />
+            <End Role="GPMS_CLIENT_SUSCRIPT" EntitySet="GPMS_CLIENT_SUSCRIPT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___5629CD9C" Association="Self.FK__GPMS_PROV__GPMS___5629CD9C">
+            <End Role="GPMS_PROVIDER_TYP" EntitySet="GPMS_PROVIDER_TYP" />
+            <End Role="GPMS_PROVIDER" EntitySet="GPMS_PROVIDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___571DF1D5" Association="Self.FK__GPMS_PROV__GPMS___571DF1D5">
+            <End Role="GPMS_PROVIDER" EntitySet="GPMS_PROVIDER" />
+            <End Role="GPMS_PROVIDER_CLIENTS" EntitySet="GPMS_PROVIDER_CLIENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___59063A47" Association="Self.FK__GPMS_PROV__GPMS___59063A47">
+            <End Role="GPMS_PROVIDER" EntitySet="GPMS_PROVIDER" />
+            <End Role="GPMS_PROVIDER_SUPPLY" EntitySet="GPMS_PROVIDER_SUPPLY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_PROV__GPMS___59FA5E80" Association="Self.FK__GPMS_PROV__GPMS___59FA5E80">
+            <End Role="GPMS_PROVIDER_CLIENTS" EntitySet="GPMS_PROVIDER_CLIENTS" />
+            <End Role="GPMS_PROVIDER_SUSCRIPT" EntitySet="GPMS_PROVIDER_SUSCRIPT" />
+          </AssociationSet>
+          <EntitySet Name="GPMS_CLIENT_STATE" EntityType="Model.GPMS_CLIENT_STATE" />
+          <EntitySet Name="GPMS_STATE" EntityType="Model.GPMS_STATE" />
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___73BA3083" Association="Model.FK__GPMS_CLIE__GPMS___73BA3083">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_CLIENT_STATE" EntitySet="GPMS_CLIENT_STATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___74AE54BC" Association="Model.FK__GPMS_CLIE__GPMS___74AE54BC">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_CLIENT_STATE" EntitySet="GPMS_CLIENT_STATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_CLIE__GPMS___01142BA1" Association="Model.FK__GPMS_CLIE__GPMS___01142BA1">
+            <End Role="GPMS_STATE" EntitySet="GPMS_STATE" />
+            <End Role="GPMS_CLIENT_STATE" EntitySet="GPMS_CLIENT_STATE" />
+          </AssociationSet>
+          <EntitySet Name="GPMS_MISSION" EntityType="Model.GPMS_MISSION" />
+          <EntitySet Name="GPMS_MISSION_ACC" EntityType="Model.GPMS_MISSION_ACC" />
+          <EntitySet Name="GPMS_MISSION_CLIENT_ACC" EntityType="Model.GPMS_MISSION_CLIENT_ACC" />
+          <EntitySet Name="GPMS_MISSION_STATE" EntityType="Model.GPMS_MISSION_STATE" />
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___498EEC8D" Association="Model.FK__GPMS_MISS__GPMS___498EEC8D">
+            <End Role="GPMS_CLIENT" EntitySet="GPMS_CLIENT" />
+            <End Role="GPMS_MISSION_CLIENT_ACC" EntitySet="GPMS_MISSION_CLIENT_ACC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___3D2915A8" Association="Model.FK__GPMS_MISS__GPMS___3D2915A8">
+            <End Role="GPMS_PROVIDER" EntitySet="GPMS_PROVIDER" />
+            <End Role="GPMS_MISSION" EntitySet="GPMS_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___3E1D39E1" Association="Model.FK__GPMS_MISS__GPMS___3E1D39E1">
+            <End Role="GPMS_MISSION_STATE" EntitySet="GPMS_MISSION_STATE" />
+            <End Role="GPMS_MISSION" EntitySet="GPMS_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___3F115E1A" Association="Model.FK__GPMS_MISS__GPMS___3F115E1A">
+            <End Role="GPMS_PROVIDER_SUPPLY" EntitySet="GPMS_PROVIDER_SUPPLY" />
+            <End Role="GPMS_MISSION" EntitySet="GPMS_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___489AC854" Association="Model.FK__GPMS_MISS__GPMS___489AC854">
+            <End Role="GPMS_MISSION" EntitySet="GPMS_MISSION" />
+            <End Role="GPMS_MISSION_CLIENT_ACC" EntitySet="GPMS_MISSION_CLIENT_ACC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GPMS_MISS__GPMS___4A8310C6" Association="Model.FK__GPMS_MISS__GPMS___4A8310C6">
+            <End Role="GPMS_MISSION_ACC" EntitySet="GPMS_MISSION_ACC" />
+            <End Role="GPMS_MISSION_CLIENT_ACC" EntitySet="GPMS_MISSION_CLIENT_ACC" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GPMS_CLIENT_STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_CLIENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="GPMS_STATE_ID" Type="Int32" Nullable="false" />
+          <Property Name="LAT" Type="Double" />
+          <Property Name="LON" Type="Double" />
+          <Property Name="DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="POS" Type="Geography" />
+          <NavigationProperty Name="GPMS_CLIENT" Relationship="Model.FK__GPMS_CLIE__GPMS___73BA3083" FromRole="GPMS_CLIENT_STATE" ToRole="GPMS_CLIENT" />
+          <NavigationProperty Name="GPMS_CLIENT1" Relationship="Model.FK__GPMS_CLIE__GPMS___74AE54BC" FromRole="GPMS_CLIENT_STATE" ToRole="GPMS_CLIENT" />
+          <NavigationProperty Name="GPMS_STATE" Relationship="Model.FK__GPMS_CLIE__GPMS___01142BA1" FromRole="GPMS_CLIENT_STATE" ToRole="GPMS_STATE" />
+        </EntityType>
+        <EntityType Name="GPMS_STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_CLIENT_STATE" Relationship="Model.FK__GPMS_CLIE__GPMS___01142BA1" FromRole="GPMS_STATE" ToRole="GPMS_CLIENT_STATE" />
+        </EntityType>
+        <Association Name="FK__GPMS_CLIE__GPMS___73BA3083">
+          <End Type="Model.GPMS_CLIENT" Role="GPMS_CLIENT" Multiplicity="1" />
+          <End Type="Model.GPMS_CLIENT_STATE" Role="GPMS_CLIENT_STATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_STATE">
+              <PropertyRef Name="GPMS_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_CLIE__GPMS___74AE54BC">
+          <End Type="Model.GPMS_CLIENT" Role="GPMS_CLIENT" Multiplicity="1" />
+          <End Type="Model.GPMS_CLIENT_STATE" Role="GPMS_CLIENT_STATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_STATE">
+              <PropertyRef Name="GPMS_STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_CLIE__GPMS___01142BA1">
+          <End Type="Model.GPMS_STATE" Role="GPMS_STATE" Multiplicity="1" />
+          <End Type="Model.GPMS_CLIENT_STATE" Role="GPMS_CLIENT_STATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_CLIENT_STATE">
+              <PropertyRef Name="GPMS_STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GPMS_MISSION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_PROVIDER_ID" Type="Int32" />
+          <Property Name="GPMS_MISSION_STATE_ID" Type="Int32" />
+          <Property Name="GPMS_SUPPLY_ID" Type="Int32" />
+          <Property Name="CostumMissionID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CostumURL" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LAT" Type="Double" />
+          <Property Name="LON" Type="Double" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="OverTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="GPMS_PROVIDER" Relationship="Model.FK__GPMS_MISS__GPMS___3D2915A8" FromRole="GPMS_MISSION" ToRole="GPMS_PROVIDER" />
+          <NavigationProperty Name="GPMS_MISSION_STATE" Relationship="Model.FK__GPMS_MISS__GPMS___3E1D39E1" FromRole="GPMS_MISSION" ToRole="GPMS_MISSION_STATE" />
+          <NavigationProperty Name="GPMS_PROVIDER_SUPPLY" Relationship="Model.FK__GPMS_MISS__GPMS___3F115E1A" FromRole="GPMS_MISSION" ToRole="GPMS_PROVIDER_SUPPLY" />
+          <NavigationProperty Name="GPMS_MISSION_CLIENT_ACC" Relationship="Model.FK__GPMS_MISS__GPMS___489AC854" FromRole="GPMS_MISSION" ToRole="GPMS_MISSION_CLIENT_ACC" />
+        </EntityType>
+        <EntityType Name="GPMS_MISSION_ACC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_MISSION_CLIENT_ACC" Relationship="Model.FK__GPMS_MISS__GPMS___4A8310C6" FromRole="GPMS_MISSION_ACC" ToRole="GPMS_MISSION_CLIENT_ACC" />
+        </EntityType>
+        <EntityType Name="GPMS_MISSION_CLIENT_ACC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPMS_MISSION_ID" Type="Int32" />
+          <Property Name="GPMS_CLIENT_ID" Type="Int32" />
+          <Property Name="GPMS_MISSION_ACC_ID" Type="Int32" />
+          <Property Name="DATETIME" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="GPMS_CLIENT" Relationship="Model.FK__GPMS_MISS__GPMS___498EEC8D" FromRole="GPMS_MISSION_CLIENT_ACC" ToRole="GPMS_CLIENT" />
+          <NavigationProperty Name="GPMS_MISSION" Relationship="Model.FK__GPMS_MISS__GPMS___489AC854" FromRole="GPMS_MISSION_CLIENT_ACC" ToRole="GPMS_MISSION" />
+          <NavigationProperty Name="GPMS_MISSION_ACC" Relationship="Model.FK__GPMS_MISS__GPMS___4A8310C6" FromRole="GPMS_MISSION_CLIENT_ACC" ToRole="GPMS_MISSION_ACC" />
+        </EntityType>
+        <EntityType Name="GPMS_MISSION_STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPMS_MISSION" Relationship="Model.FK__GPMS_MISS__GPMS___3E1D39E1" FromRole="GPMS_MISSION_STATE" ToRole="GPMS_MISSION" />
+        </EntityType>
+        <Association Name="FK__GPMS_MISS__GPMS___498EEC8D">
+          <End Type="Model.GPMS_CLIENT" Role="GPMS_CLIENT" Multiplicity="0..1" />
+          <End Type="Model.GPMS_MISSION_CLIENT_ACC" Role="GPMS_MISSION_CLIENT_ACC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_CLIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION_CLIENT_ACC">
+              <PropertyRef Name="GPMS_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___3D2915A8">
+          <End Type="Model.GPMS_PROVIDER" Role="GPMS_PROVIDER" Multiplicity="0..1" />
+          <End Type="Model.GPMS_MISSION" Role="GPMS_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION">
+              <PropertyRef Name="GPMS_PROVIDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___3E1D39E1">
+          <End Type="Model.GPMS_MISSION_STATE" Role="GPMS_MISSION_STATE" Multiplicity="0..1" />
+          <End Type="Model.GPMS_MISSION" Role="GPMS_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_MISSION_STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION">
+              <PropertyRef Name="GPMS_MISSION_STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___3F115E1A">
+          <End Type="Model.GPMS_PROVIDER_SUPPLY" Role="GPMS_PROVIDER_SUPPLY" Multiplicity="0..1" />
+          <End Type="Model.GPMS_MISSION" Role="GPMS_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_PROVIDER_SUPPLY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION">
+              <PropertyRef Name="GPMS_SUPPLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___489AC854">
+          <End Type="Model.GPMS_MISSION" Role="GPMS_MISSION" Multiplicity="0..1" />
+          <End Type="Model.GPMS_MISSION_CLIENT_ACC" Role="GPMS_MISSION_CLIENT_ACC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_MISSION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION_CLIENT_ACC">
+              <PropertyRef Name="GPMS_MISSION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GPMS_MISS__GPMS___4A8310C6">
+          <End Type="Model.GPMS_MISSION_ACC" Role="GPMS_MISSION_ACC" Multiplicity="0..1" />
+          <End Type="Model.GPMS_MISSION_CLIENT_ACC" Role="GPMS_MISSION_CLIENT_ACC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPMS_MISSION_ACC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GPMS_MISSION_CLIENT_ACC">
+              <PropertyRef Name="GPMS_MISSION_ACC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="GMSPPSEntities">
+          <EntitySetMapping Name="GPMS_CLIENT">
+            <EntityTypeMapping TypeName="Model.GPMS_CLIENT">
+              <MappingFragment StoreEntitySet="GPMS_CLIENT">
+                <ScalarProperty Name="LiveID" ColumnName="LiveID" />
+                <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+                <ScalarProperty Name="GoogleID" ColumnName="GoogleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GPMS_DEVICE_TYPE_ID" ColumnName="GPMS_DEVICE_TYPE_ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TOOKEN" ColumnName="TOOKEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_CLIENT_SUSCRIPT">
+            <EntityTypeMapping TypeName="Model.GPMS_CLIENT_SUSCRIPT">
+              <MappingFragment StoreEntitySet="GPMS_CLIENT_SUSCRIPT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GPMS_CLIENT_ID" ColumnName="GPMS_CLIENT_ID" />
+                <ScalarProperty Name="GPMS_PROVIDER_SUPPLY_ID" ColumnName="GPMS_PROVIDER_SUPPLY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_DEVICE_TYPE">
+            <EntityTypeMapping TypeName="Model.GPMS_DEVICE_TYPE">
+              <MappingFragment StoreEntitySet="GPMS_DEVICE_TYPE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DEVICE_SYSTEM" ColumnName="DEVICE_SYSTEM" />
+                <ScalarProperty Name="PNS_STRING" ColumnName="PNS_STRING" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_PROVIDER">
+            <EntityTypeMapping TypeName="Model.GPMS_PROVIDER">
+              <MappingFragment StoreEntitySet="GPMS_PROVIDER">
+                <ScalarProperty Name="Suscribe_Password" ColumnName="Suscribe_Password" />
+                <ScalarProperty Name="API_TOOKEN" ColumnName="API_TOOKEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GPMS_PROVIDER_TYP_ID" ColumnName="GPMS_PROVIDER_TYP_ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="LOGO_URL" ColumnName="LOGO_URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_PROVIDER_CLIENTS">
+            <EntityTypeMapping TypeName="Model.GPMS_PROVIDER_CLIENTS">
+              <MappingFragment StoreEntitySet="GPMS_PROVIDER_CLIENTS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GPMS_PROVIDER_ID" ColumnName="GPMS_PROVIDER_ID" />
+                <ScalarProperty Name="GPMS_CLIENT_ID" ColumnName="GPMS_CLIENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_PROVIDER_SUPPLY">
+            <EntityTypeMapping TypeName="Model.GPMS_PROVIDER_SUPPLY">
+              <MappingFragment StoreEntitySet="GPMS_PROVIDER_SUPPLY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GPMS_PROVIDER_ID" ColumnName="GPMS_PROVIDER_ID" />
+                <ScalarProperty Name="SUPPLY" ColumnName="SUPPLY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_PROVIDER_SUSCRIPT">
+            <EntityTypeMapping TypeName="Model.GPMS_PROVIDER_SUSCRIPT">
+              <MappingFragment StoreEntitySet="GPMS_PROVIDER_SUSCRIPT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GPMS_PROVIDER_CLIENTS_ID" ColumnName="GPMS_PROVIDER_CLIENTS_ID" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_PROVIDER_TYP">
+            <EntityTypeMapping TypeName="Model.GPMS_PROVIDER_TYP">
+              <MappingFragment StoreEntitySet="GPMS_PROVIDER_TYP">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TYP" ColumnName="TYP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_CLIENT_STATE">
+            <EntityTypeMapping TypeName="Model.GPMS_CLIENT_STATE">
+              <MappingFragment StoreEntitySet="GPMS_CLIENT_STATE">
+                <ScalarProperty Name="POS" ColumnName="POS" />
+                <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
+                <ScalarProperty Name="LON" ColumnName="LON" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="GPMS_STATE_ID" ColumnName="GPMS_STATE_ID" />
+                <ScalarProperty Name="GPMS_CLIENT_ID" ColumnName="GPMS_CLIENT_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_STATE">
+            <EntityTypeMapping TypeName="Model.GPMS_STATE">
+              <MappingFragment StoreEntitySet="GPMS_STATE">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_MISSION">
+            <EntityTypeMapping TypeName="Model.GPMS_MISSION">
+              <MappingFragment StoreEntitySet="GPMS_MISSION">
+                <ScalarProperty Name="OverTime" ColumnName="OverTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="LON" ColumnName="LON" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="CostumURL" ColumnName="CostumURL" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CostumMissionID" ColumnName="CostumMissionID" />
+                <ScalarProperty Name="GPMS_SUPPLY_ID" ColumnName="GPMS_SUPPLY_ID" />
+                <ScalarProperty Name="GPMS_MISSION_STATE_ID" ColumnName="GPMS_MISSION_STATE_ID" />
+                <ScalarProperty Name="GPMS_PROVIDER_ID" ColumnName="GPMS_PROVIDER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_MISSION_ACC">
+            <EntityTypeMapping TypeName="Model.GPMS_MISSION_ACC">
+              <MappingFragment StoreEntitySet="GPMS_MISSION_ACC">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_MISSION_CLIENT_ACC">
+            <EntityTypeMapping TypeName="Model.GPMS_MISSION_CLIENT_ACC">
+              <MappingFragment StoreEntitySet="GPMS_MISSION_CLIENT_ACC">
+                <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
+                <ScalarProperty Name="GPMS_MISSION_ACC_ID" ColumnName="GPMS_MISSION_ACC_ID" />
+                <ScalarProperty Name="GPMS_CLIENT_ID" ColumnName="GPMS_CLIENT_ID" />
+                <ScalarProperty Name="GPMS_MISSION_ID" ColumnName="GPMS_MISSION_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPMS_MISSION_STATE">
+            <EntityTypeMapping TypeName="Model.GPMS_MISSION_STATE">
+              <MappingFragment StoreEntitySet="GPMS_MISSION_STATE">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

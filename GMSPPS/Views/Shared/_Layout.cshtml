@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Custom Fonts -->
+
+    <script type="text/javascript">
+        var appInsights = window.appInsights || function (config) {
+            function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
+        }({
+            instrumentationKey: "5b0f7ffb-b426-4d71-98bd-f2ac88165f3d"
+        });
+
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+<body onload="prettyPrint()" bgcolor="white">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("GMSpPs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("swagger", "Index", "swagger", new { area = "" }, null)</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Provider", "Index", "PROVIDER", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Mission", "Index", "Mission", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Provider", "Index", "PROVIDER", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Mission", "Index", "Mission", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container body-content">
+
+
+        @RenderBody()
+        @RenderSection("SPAViews", required: false)
+    </div>
+    <hr />
+    <footer id="footer">
+        <div class="container">
+            <div class="row sections">
+                <div class="col-sm-4 recent_posts">
+                    <h3 class="footer_header">
+                        Recent Posts
+                    </h3>
+                    <div class="post">
+                        <a href="blogpost.html">
+                            <img src="img/recent_post1.png" class="img-circle">
+                        </a>
+                        <div class="date">
+                            Wed, 12 Dec
+                        </div>
+                        <a href="blogpost.html" class="title">
+                            Randomised words which don't look embarrasing hidden.
+                        </a>
+                    </div>
+                    <div class="post">
+                        <a href="blogpost.html">
+                            <img src="img/recent_post2.png" class="img-circle">
+                        </a>
+                        <div class="date">
+                            Mon, 12 Dec
+                        </div>
+                        <a href="blogpost.html" class="title">
+                            Randomised words which don't look embarrasing hidden.
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4 testimonials">
+                    <h3 class="footer_header">
+                        Testimonials
+                    </h3>
+                    <div class="wrapper">
+                        <div class="quote">
+                            <span>“</span>
+                            There are many variations of passages of randomised words which don't look even slightly believable. You need to be sure there isn't anything embarrassing of text.
+                            <span></span>
+                        </div>
+                        <div class="author">
+                            <img src="img/user-display.png">
+                            <div class="name">Alejandra Galvan Castillo</div>
+                            <div class="info">
+                                Details Canvas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 contact">
+                    <h3 class="footer_header">
+                        Contact
+                    </h3>
+                    <form action="#" method="post">
+                        <input placeholder="Your name" type="text">
+                        <input placeholder="Your email" type="text">
+                        <textarea rows="3" placeholder="Message"></textarea>
+                        <input value="Send" type="submit">
+                    </form>
+                </div>
+            </div>
+            <div class="row credits">
+                <div class="col-md-12">
+                    <div class="row social">
+                        <div class="col-md-12">
+                            <a href="#" class="facebook">
+                                <span class="socialicons ico1"></span>
+                                <span class="socialicons_h ico1h"></span>
+                            </a>
+                            <a href="#" class="twitter">
+                                <span class="socialicons ico2"></span>
+                                <span class="socialicons_h ico2h"></span>
+                            </a>
+                            <a href="#" class="gplus">
+                                <span class="socialicons ico3"></span>
+                                <span class="socialicons_h ico3h"></span>
+                            </a>
+                            <a href="#" class="flickr">
+                                <span class="socialicons ico4"></span>
+                                <span class="socialicons_h ico4h"></span>
+                            </a>
+                            <a href="#" class="pinterest">
+                                <span class="socialicons ico5"></span>
+                                <span class="socialicons_h ico5h"></span>
+                            </a>
+                            <a href="#" class="dribble">
+                                <span class="socialicons ico6"></span>
+                                <span class="socialicons_h ico6h"></span>
+                            </a>
+                            <a href="#" class="behance">
+                                <span class="socialicons ico7"></span>
+                                <span class="socialicons_h ico7h"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row copyright">
+                        <div class="col-md-12">
+                            &copy; @DateTime.Now.Year - GMSPPS. All rights reserved. Citaurus.com.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

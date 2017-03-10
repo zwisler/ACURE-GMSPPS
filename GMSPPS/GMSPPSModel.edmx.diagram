@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8953836909aa4426a10ee548bbd59811" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.GPMS_CLIENT" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GPMS_CLIENT_SUSCRIPT" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GPMS_DEVICE_TYPE" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GPMS_PROVIDER" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GPMS_PROVIDER_CLIENTS" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GPMS_PROVIDER_SUPPLY" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GPMS_PROVIDER_SUSCRIPT" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GPMS_PROVIDER_TYP" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__GPMS_CLIE__GPMS___534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GPMS_CLIE__GPMS___5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GPMS_PROV__GPMS___5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GPMS_CLIE__GPMS___5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GPMS_PROV__GPMS___5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GPMS_PROV__GPMS___571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GPMS_PROV__GPMS___59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GPMS_PROV__GPMS___59FA5E80" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.GPMS_CLIENT_STATE" Width="1.5" PointX="5.625" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.GPMS_STATE" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="Model.FK__GPMS_CLIE__GPMS___73BA3083" />
+        <AssociationConnector Association="Model.FK__GPMS_CLIE__GPMS___74AE54BC" />
+        <AssociationConnector Association="Model.FK__GPMS_CLIE__GPMS___01142BA1" />
+        <EntityTypeShape EntityType="Model.GPMS_MISSION" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="Model.GPMS_MISSION_ACC" Width="1.5" PointX="6.25" PointY="16.375" />
+        <EntityTypeShape EntityType="Model.GPMS_MISSION_CLIENT_ACC" Width="1.5" PointX="8.5" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.GPMS_MISSION_STATE" Width="1.5" PointX="3" PointY="15" />
+        <AssociationConnector Association="Model.FK__GPMS_MISS__GPMS___498EEC8D" />
+        <AssociationConnector Association="Model.FK__GPMS_MISS__GPMS___3D2915A8" />
+        <AssociationConnector Association="Model.FK__GPMS_MISS__GPMS___3E1D39E1" />
+        <AssociationConnector Association="Model.FK__GPMS_MISS__GPMS___3F115E1A" />
+        <AssociationConnector Association="Model.FK__GPMS_MISS__GPMS___489AC854" />
+        <AssociationConnector Association="Model.FK__GPMS_MISS__GPMS___4A8310C6" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
