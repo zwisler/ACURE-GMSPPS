@@ -161,7 +161,8 @@ namespace GMSPPS
             Trace.TraceInformation("AuthenticationHandler GOOGLE" + password);
             // aud stimmt.
             //return password == "232925292391-pn2oegkpd7qq1d3bse5d5qsherrphhsk.apps.googleusercontent.com";
-            return password == "414999757757-t0i02p4g2cjlnfpu6bm1valmrj7csfec.apps.googleusercontent.com";
+            //"aud": "414999757757-meg30nbsf899quqhhubvarf2cjf3guk5.apps.googleusercontent.com",
+            return password == "414999757757-meg30nbsf899quqhhubvarf2cjf3guk5.apps.googleusercontent.com";
         }
         private bool verifyWindowsUser(dynamic MicrosoftResult)
         {
